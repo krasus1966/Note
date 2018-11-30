@@ -1,7 +1,3 @@
-[TOC]
-
-
-
 # Maven常用构建命令
 
 **compile** 编译
