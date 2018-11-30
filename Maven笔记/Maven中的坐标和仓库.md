@@ -15,13 +15,21 @@
 
 仓库用来管理项目依赖，仓库也分为两种：本地仓库和远程仓库。
 
-远程仓库全球地址可以在***/apache-maven-3.3.3/lib/maven-model-builder-3.3.3.jar/org/apache/maven/model/pom-4.0.0.xml***中的**<url>**标签中看到。
+远程仓库全球地址可以在
+```
+/apache-maven-3.3.3/lib/maven-model-builder-3.3.3.jar/org/apache/maven/model/pom-4.0.0.xml
+```
+中的url标签中看到。
 
 #### 镜像仓库
 
 如何修改镜像仓库地址：
 
-打开***/apache-maven-3.3.3/conf/setting.xml***,找到
+打开
+```
+/apache-maven-3.3.3/conf/setting.xml
+```
+找到
 
 ```
 <mirrors>
