@@ -57,7 +57,7 @@
 在其中添加目录位置
 
 ```
-<localRepository>E:/Study/Tools/MavenRespository</localRepository>2
+<localRepository>E:/Study/Tools/MavenRespository</localRepository>
 ```
 
 保存
