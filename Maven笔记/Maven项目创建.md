@@ -96,3 +96,4 @@ public class ServletTest extends HttpServlet{
 
 *TIPS：*IDEA右侧的*Maven Project*栏，可以看到插件信息，依赖信息，在*Lifecycle*中可以执行*Maven*的各个命令。
 
+IDEA快速添加依赖的快捷键：*Alt+insert*
