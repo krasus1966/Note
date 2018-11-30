@@ -1,14 +1,6 @@
-[TOC]
-
-
-
 # Maven常用构建命令
 
-**compile** 编译
-**test** 测试
-**-v** 查看maven版本信息
-**mvn clean** 删除maven生成的文件
-**install**  首先进入项目根目录，输入mvn install 可以将项目发布到本地仓库中
+**compile** 编译<br>**test** 测试<br>**-v** 查看maven版本信息<br>**mvn clean** 删除maven生成的文件<br>**install**  首先进入项目根目录，输入mvn install 可以将项目发布到本地仓库中<br>**package** 打包<br>
 
 ---
 
@@ -110,6 +102,18 @@ mvn archetype:generate -DgroupId=cn.cx.maven04 -DartifactId=maven04-demo -Dversi
 ```
 
 如果依旧卡住，方法同上。
+
+# Maven生命周期
+
+Maven对项目构建过程分为三套相互独立的生命周期，请注意这里说的是三套，而且相互独立：
+
+1. Clean Lifecycle: 在进行真正的构建之前进行一些清理工作。
+2. Default Lifecycle:构建的核心部分：编译、测试、打包、部署等等。
+3. Site Lifecycle:生成项目报告、站点、发布站点。
+
+每一个阶段都有一个对应的命令，并有相应的插件来支持命令的运行。
+
+注：属于同一个指令周期内的指令，当后面的命令执行时，前面的命令会自动执行。
 
 
 
