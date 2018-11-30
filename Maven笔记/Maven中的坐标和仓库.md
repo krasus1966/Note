@@ -44,9 +44,9 @@
 
 #### 更改仓库位置
 
-默认存放在用户个人目录中，即***C:\Users\ASUS\.m2\repository***中。
+默认存放在用户个人目录中，即**C:\Users\ASUS\.m2\repository**中。
 
-依旧是修改***setting.xml***来更改仓库位置
+依旧是修改**setting.xml**来更改仓库位置
 
 找到
 
