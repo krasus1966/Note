@@ -97,3 +97,67 @@ public class ServletTest extends HttpServlet{
 *TIPS：*IDEA右侧的*Maven Project*栏，可以看到插件信息，依赖信息，在*Lifecycle*中可以执行*Maven*的各个命令。
 
 IDEA快速添加依赖的快捷键：*Alt+insert*
+
+# Maven整合Struts2
+
+1. 创建maven项目，选择archetype-webapp，构建maven目录。
+2. 在resources目录上点右键 **New->XML Configuration File->Struts Config**创建Struts2配置文件struts.xml：
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+    <package name="default" extends="struts-default">
+        <action name="HelloAction" class="cn.cx.web.action.HelloAction">
+            <result>index.jsp</result>
+        </action>
+    </package>
+</struts>
+```
+
+3. 在pom.xml添加struts2依赖
+
+```xml
+<dependency>
+	<groupId>junit</groupId>
+	<artifactId>junit</artifactId>
+	<version>4.11</version>
+		<scope>test</scope>
+</dependency>
+
+<dependency>
+	<groupId>org.apache.struts</groupId>
+	<artifactId>struts2-core</artifactId>
+	<version>2.5.18</version>
+</dependency>
+```
+
+4. 添加struts2的action目录，创建HelloAction类
+
+```java
+package cn.cx.web.action;
+import com.opensymphony.xwork2.ActionSupport;
+public class HelloAction extends ActionSupport {
+    @Override
+    public String execute()throws Exception{
+        System.out.println("进入默认的HelloAction...返回默认的jsp页面");
+        return SUCCESS;
+    }
+}
+```
+
+5. 在web.xml中添加struts2过滤器
+
+```xml
+<filter>
+    <filter-name>struts2</filter-name>
+    <filter-class>org.apache.struts2.dispatcher.filter.StrutsPrepareAndExecuteFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>struts2</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+```
+
