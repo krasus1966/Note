@@ -151,3 +151,13 @@ log4j.logger.org.apache=INFO
 ```
 
 然后启动TomCat，在执行调用SQL语句的操作时，就会在控制台看到信息，用于查看错误信息。
+
+## 其他问题
+
+#### 传递单参数并返回单参数
+
+```
+parameterType="java.lang.String" resultType="java.lang.String"
+```
+
+并注意，方法调用不要出错，选择one 方法：selectone().
