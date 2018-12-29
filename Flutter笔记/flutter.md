@@ -24,7 +24,7 @@
 ```
     配置完成后就可以进入flutter的安装目录中，启动flutter_console.bat来启动flutter(不支持git等第三方终端启动)，使用flutter doctor 来检查是否缺少依赖。
     若这个时候还没有安装Android Studio，应该出现如下错误
-![image](\flutter1.png)
+![flutter1](https://github.com/krasus1966/Note/blob/master/Flutter笔记/flutter1.png)
     这时候我们来安装其所需要的依赖项。
 ## Android Studio 安装
     百度下载即可，改掉安装位置，安装完成后运行，应该会自动下载并配置Android SDK。
@@ -40,7 +40,7 @@
     需要注意，点击开始新Flutter项目后，程序会进入假死状态，是正常现象，等待1-2分钟就会进入创建页面
     创建完项目卡在Creating Flutter Project超过5分钟，请强行结束程序并重新打开，选择Open Project(不是Import！！！)找到你的项目位置即可（一般只有第一次会卡在这里）
     使用Android Studio我们需要创建一个Android虚拟设备，点击右上角的图标即可创建，选择好手机配置型号及对应的Android版本
-![image](\flutter4.png)
+![flutter4](https://github.com/krasus1966/Note/blob/master/Flutter笔记/flutter4.png)
 --- 
     修改AVD和gradle位置来精简C盘空间，看以下三篇文章
 >https://blog.csdn.net/qiujuer/article/details/44160127  
@@ -55,12 +55,12 @@
 最后发现一个问题，修改后运行flutter doctor 会检测你并未安装Android Studio，不影响使用但是强迫症看着很难受  
 ## 继续检查 Flutter 依赖
     回到flutter_console.bat重新执行flutter doctor命令，应该出现如下结果：
-![image](\flutter3.png)
+![flutter3](https://github.com/krasus1966/Note/blob/master/Flutter笔记/flutter3.png)
     执行提示的命令，再次执行flutter doctor命令，应该只有最后一个提示了  
-![image](\flutter5.png)  
+![flutter5](https://github.com/krasus1966/Note/blob/master/Flutter笔记/flutter5.png)  
     在Android Studio中开启虚拟设备，再次执行flutter doctor，一切就都解决了。
 ## 回到Android Studio中
     检查一下 Project Structure->Modules 中的Module SDK是否为空，若为空选择你的Android SDK位置
     右上角开启虚拟设备后，<no devices>会变成当前开启的设备
     第一次运行会十分的慢，慢慢等待吧。
-![image](\flutter6.png)
+![flutter6](https://github.com/krasus1966/Note/blob/master/Flutter笔记/flutter6.png)
