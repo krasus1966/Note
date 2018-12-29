@@ -33,16 +33,18 @@
     ANDROID_HOME : 你的 \AndroidSDK 目录位置
     Path : 你的 \AndroidSDK 目录位置
     Path : 你的 \AndroidSDK\platform-tools 目录位置
-```
-   在Android Studio中选择Configure->Setting->System Setting->Android SDK 选择你的Android SDK目录位置
-   在Android Studio中选择Configure->Plugins 搜索flutter并安装此插件
-   重启你的Android Studio，若在起始界面看到 Start a new Flutter project即安装成功
-   需要注意，点击开始新Flutter项目后，程序会进入假死状态，是正常现象，等待1-2分钟就会进入创建页面
-   创建完项目卡在Creating Flutter Project超过5分钟，请强行结束程序并重新打开，选择Open Project(不是Import！！！)找到你的项目位置即可（一般只有第一次会卡在这里）
-    使用Android Studio我们需要创建一个Android虚拟设备，点击右上角的图标即可创建，选择好手机配置型号及对应的Android版本
+``` 
+
+在Android Studio中选择Configure->Setting->System Setting->Android SDK 选择你的Android SDK目录位置  
+在Android Studio中选择Configure->Plugins 搜索flutter并安装此插件  
+重启你的Android Studio，若在起始界面看到 Start a new Flutter project即安装成功  
+需要注意，点击开始新Flutter项目后，程序会进入假死状态，是正常现象，等待1-2分钟就会进入创建页面  
+创建完项目卡在Creating Flutter Project超过5分钟，请强行结束程序并重新打开，选择Open Project(不是Import！！！)找到你的项目位置即可（一般只有第一次会卡在这里）  
+使用Android Studio我们需要创建一个Android虚拟设备，点击右上角的图标即可创建，选择好手机配置型号及对应的Android版本: 
+
 ![flutter4](https://github.com/krasus1966/Note/blob/master/Flutter笔记/flutter4.png)
---- 
-   修改AVD和gradle位置来精简C盘空间，看以下三篇文章
+
+修改AVD和gradle位置来精简C盘空间，看以下三篇文章
 >https://blog.csdn.net/qiujuer/article/details/44160127  
 
 需要注意idea.properties文件中的路径，一定要正确  
