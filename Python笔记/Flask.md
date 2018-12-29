@@ -1,5 +1,7 @@
 # Flask
 
+#### Flask基础
+
 ```python
 from flask import Flask
 
@@ -81,3 +83,174 @@ if __name__='__main__':
 >*pycharm* 中，修改post和host要在Edit Configurations中的Application中添加**--host=""**,**--post=""**来修改。
 
 > postman:用来给后端提供数据
+
+
+
+#### request
+
+```python
+#!/usr/bin/env python 
+# -*- coding:utf-8 -*-
+from flask import Flask,request
+
+app = Flask(__name__)
+
+@app.route("/index",methods = ["GET","POST"])
+def index():
+    # request中包含了前端发送过来的所有请求数据
+    # form和data是用来提取请求体数据
+    # 通过request.form可以直接提取请求体中的表单格式的数据，是一个类字典的对象
+    # 通过get方法只能拿到多个同名参数的第一个
+    name = request.form.get("name")
+    age = request.form.get("age")
+
+    # args是用来提取url中的参数(查询字符串)
+    city = request.args.get("city")
+    return "hello name=%s,age=%s,city=%s" % (name,age,city)
+
+if __name__ == '__main__':
+    app.run(debug=True)
+```
+
+#### with
+
+````python
+# 上下文管理器
+# with open("./1.txt","wb") as f:
+#     f.write("Hello flask")
+
+class Foo(object):
+    def __enter__(self):
+        """进入with语句的时候被调用"""
+        print ("enter called")
+
+    def __exit__(self,exc_type,exc_val,exc_tb):
+        """离开with语句的时候被with调用"""
+        print("exc_type: %s" % exc_type)
+        print("exc_val: %s" % exc_val)
+        print("exc_tb: %s" % exc_tb)
+
+with Foo()as foo:
+    print("hello python")
+````
+
+#### abort
+
+```python
+from flask import Flask, request, abort, Response
+app = Flask(__name__)
+@app.route("/login", methods=["GET"])
+def login():
+    # name = request.form.get("name")
+    # pwd = request.form.get()
+    name = ""
+    pwd = ""
+    if name != "zhangsan" and pwd != "admin":
+        # 使用abort函数可以立即终止视图函数的执行
+        # 并可以返回给前端特定的信息
+        # 1.传递状态码信息
+        abort(404)
+        # 2.传递响应体信息
+        # resp = Response("Login Failed")
+        # abort(resp)
+    return "login success"
+# 定义错误处理方法
+@app.errorhandler(404)
+def handle_404_error(err):
+    """自定义的处理错误方法"""
+    # 这个函数的返回值会是前端用户看到的最终结果
+    return u"出现了404错误，错误信息 %s" % err
+if __name__ == '__main__':
+    app.run(debug=True)
+
+```
+
+#### response
+
+```python
+from flask import Flask, request, abort, Response,make_response
+app = Flask(__name__)
+@app.route("/index")
+def login():
+    # 1.使用元祖，返回自定义的响应信息
+    #        响应体                状态码 响应头
+    # return "index page", 400, [{"Itcast","python"},{"city","shenzhen"}]
+    # return "index page",400,{"Itcast1":"python1","City1":"sz1"}
+    # return "index page","666 itcast status", {"Itcast1":"python1","City1":"sz1"}
+    # 2.使用make_response 来构造响应信息
+    resp = make_response("index page 2")
+    resp.status = "999 itcast" # 设置状态码
+    resp.headers["city"] = "sz" # 设置响应头
+    return resp
+if __name__ == '__main__':
+    app.run(debug=True)
+```
+
+#### json
+
+```python
+from flask import Flask, jsonify
+import json
+app = Flask(__name__)
+@app.route("/index")
+def index():
+    # json 就是字符串
+    data = {
+        "name": "python",
+        "age": 18
+    }
+    # json.dumps(字典) 将python的字典转换为json字符串
+    # json.loads(字符串) 将字符串转换为python中的字典
+    # json_str = json.dumps(data)
+    # return json_str, 200, {"Content-Type": "application/json"}
+    # jsonify()帮助我们转为json数据，并设置响应头 Content-Type 为 application/json
+    #return jsonify(data)
+    return jsonify(city="sz",country="China")
+if __name__ == '__main__':
+    app.run(debug=True)
+```
+
+#### Templates
+
+```python
+from flask import Flask, render_template
+app = Flask(__name__)
+@app.route("/index")
+def index():
+    # index.html 要放到templates文件夹中，flask默认在这个文件夹中渲染模板
+    return render_template("index.html", name="python", age=18)
+if __name__ == '__main__':
+    app.run(debug=True)
+```
+
+```python
+from flask import Flask, render_template
+app = Flask(__name__)
+@app.route("/index")
+data = {
+    "name" = "python",
+    "age" = 18
+}
+def index():
+    return render_template("index.html", **data) # **代表解包，解包字典
+if __name__ == '__main__':
+    app.run(debug=True)
+    
+html:
+        {# 过滤器，直接    | 过滤器  ，可以加多个#}
+    <p>{{ "   flask world    " | trim }}</p>
+            
+def list_step_2(li):
+    """自定义过滤器"""
+    return li[::2]
+# 注册过滤器
+app.add_template_filter(list_step_2, "li2")
+
+            
+# 装饰器定义自定义过滤器            
+@app.template_filter("li2")
+def list_step_2(li):
+    """自定义过滤器"""
+    return li[::2]
+```
+
