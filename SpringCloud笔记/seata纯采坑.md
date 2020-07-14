@@ -1,6 +1,6 @@
 ## 采坑记录
 
-![image-20200710232945206](E:\Study\笔记\Note\SpringCloud笔记\picture\image-20200710232945206.png)
+![image-20200710232945206](.\picture\image-20200710232945206.png)
 
 图中可以看到，Spring Cloud Alibaba版本是2.2.1 RELEASE或2.1.2 RELEASE或2.0.2 RELEASE才支持使用最新的Seata，并且配置文件和老版本Seata差别很大。
 
@@ -16,9 +16,9 @@
 
 如果错误信息是null，先看配置文件（1.2.0不用写conf文件），使用nacos作为配置中心，在项目的配置文件中不必出现 service 及相关内容，全部使用nacos的配置中心的内容。
 
-![image-20200711180718014](E:\Study\笔记\Note\SpringCloud笔记\picture\image-20200711180718014.png)
+![image-20200711180718014](.\picture\image-20200711180718014.png)
 
-![image-20200711180845533](E:\Study\笔记\Note\SpringCloud笔记\picture\image-20200711180845533.png)
+![image-20200711180845533](.\picture\image-20200711180845533.png)
 
 配置一致的情况下，可能会出现另一个问题 
 

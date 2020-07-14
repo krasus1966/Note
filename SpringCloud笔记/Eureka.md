@@ -52,7 +52,7 @@ eureka:
 ```yaml
 server:
   port: 8001
-
+# 以下为生产者 消费者不需要配置Mybatis、数据源
 spring:
   application:
     name: cloud-payment-service-eureka
